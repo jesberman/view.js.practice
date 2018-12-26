@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery.js">
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="jumbotron">
+            <h2>
+                The {{trainCompanies[0]}} train to {{destination}} will arrive at {{arrivalTime}}.
+            </h2>
+        </div>
+        <br>
+
+        <div class="jumbotron">
+            <h2>
+                Train Companies in Service:
+            </h2>
+            <br>
+            <h4>
+                <ul>
+                    <li v-for="train in trainCompanies">
+                        {{train}}
+                    </li>
+                </ul>
+            </h4>
+        </div>
+
+        <div class="jumbotron">
+            <h2>
+                Train Schedule:
+            </h2>
+            <br>
+            <div style="margin-left: 20px;">
+                <h4>
+                    {{train1.arrivalTime}}: {{train1.company}} train to {{train1.destination}}
+                    <br>
+                    <h4>
+                        Ticket(s) Purchased: {{train1.ticketsPurchased}}
+                        <br>
+                        <button @click="train1.ticketsPurchased += 1">
+                            Buy Ticket
+                        </button>
+                        <button @click="train1.ticketsPurchased -= 1">
+                            Cancel Purchase
+                        </button>
+                    </h4>
+                </h4>
+                <br>
+                <h4>
+                    {{train2.arrivalTime}}: {{train2.company}} train to {{train2.destination}}
+                    <br>
+                    <h4>
+                        Ticket(s) Purchased: {{train2.ticketsPurchased}}
+                        <br>
+                        <button @click="train2.ticketsPurchased += 1">
+                            Buy Ticket
+                        </button>
+                        <button @click="train2.ticketsPurchased -= 1">
+                            Cancel Purchase
+                        </button>
+                    </h4>
+                </h4>
+                <br>
+                <h4>
+                    {{train3.arrivalTime}}: {{train3.company}} train to {{train3.destination}}
+                    <br>
+                    <h4>
+                        Ticket(s) Purchased: {{train3.ticketsPurchased}}
+                        <br>
+                        <button @click="train3.ticketsPurchased += 1">
+                            Buy Ticket
+                        </button>
+                        <button @click="train3.ticketsPurchased -= 1">
+                            Cancel Purchase
+                        </button>
+                    </h4>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue">
+    </script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                arrivalTime: '3am',
+                destination: 'Los Angeles',
+                trainCompanies: [
+                    'Polaris',
+                    'Silver Bullet',
+                    'Amtrak'
+                ],
+                train1: {
+                    'company': 'Polaris',
+                    'arrivalTime': '3AM',
+                    'ticketsPurchased': 0,
+                    'destination': "Denver"
+                },
+                train2: {
+                    'company': 'Silver Bullet',
+                    'arrivalTime': '11AM',
+                    'ticketsPurchased': 0,
+                    'destination': "Los Angeles"
+                },
+                train3: {
+                    'company': 'Amtrak',
+                    'arrivalTime': '4PM',
+                    'ticketsPurchased': 0,
+                    'destination': "Chicago"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
